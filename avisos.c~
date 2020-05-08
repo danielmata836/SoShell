@@ -1,0 +1,27 @@
+#include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <ctype.h>
+#include <time.h>
+#include <math.h>
+
+void aviso (char *mesg, int tempo){
+  while (tempo > 0){
+      sleep (1);
+      tempo--;
+    }
+  fprintf (stderr, "Aviso : %s\n", mesg);
+}
+
+void * avisowrapper(void *args) {
+char ** argsin = (char **)args;
+aviso( argsin[1], atoi ( argsin[2]) ) ;
+return NULL;
+}

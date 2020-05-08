@@ -1,0 +1,1 @@
+ls: impossível aceder a 'nãoexiste': Ficheiro ou directoria inexistente

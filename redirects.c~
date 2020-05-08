@@ -1,0 +1,16 @@
+//redirects are handled in reverse order
+// 2> >> > <
+int redirects(int numargs, char *args[])
+{
+//redirect stdout >
+if ( numargs <3) return numargs;
+if ( strcmp(args[numargs -2] , ">") ==0) {
+int fd= creat ( args[numargs -1], FILE_MODE )
+if (fd<0) { perror(NULL ) ; return -1 ; /*indicar um erro*/ }
+dup2(fd, STDOUT_FILENO)
+close(fd)
+args[numargs -2]=NULL ;
+numargs = numargs -2;
+}
+//tratar do >> open : O_WRONLY | O_APPEND
+//tratar do < open : O_RDONLY
